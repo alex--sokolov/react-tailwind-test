@@ -3,7 +3,7 @@ import React from 'react';
 const Section1 = () => {
 
   return (
-    <section id="section1">
+    <section id="section1" className="h-[790px]">
       <div
         className="absolute top-[99px] ml-[182.5px] bg-[#7b72fe] 3xl:w-[1760px] w-full h-[680px] rounded-tl-[50px] rounded-bl-[50px]
         border-2 border-red-600">
@@ -27,8 +27,6 @@ const Section1 = () => {
               </div>
             </div>
           </div>
-
-
           <div className="absolute top-0 left-0 z-10">
             <h1 className="text-3xl font-semibold text-white ml-[95px] mt-[67px]">
               Профессия<br/>
@@ -56,8 +54,6 @@ const Section1 = () => {
           <div className="content-[''] absolute -left-[66px] -bottom-[46px] w-[132px]  h-[132px]
               bg-no-repeat bg-[url('../src/assets/img/jpg/background-dots.jpg')] -z-10">
           </div>
-
-
         </div>
       </div>
     </section>
