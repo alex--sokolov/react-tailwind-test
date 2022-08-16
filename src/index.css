@@ -1,3 +1,56 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+    font-family: 'Golos Text';
+    src: local('Golos Text Regular'), local('GolosText-Regular'), url('assets/fonts/golostext/Golostextregular.woff2') format('woff2'), url('assets/fonts/golostext/Golostextregular.woff') format('woff'), url('assets/fonts/golostext/Golostextregular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Golos Text';
+    src: local('Golos Text DemiBold'), local('GolosText-DemiBold'), url('assets/fonts/golostext/Golostextdemibold.woff2') format('woff2'), url('assets/fonts/golostext/Golostextdemibold.woff') format('woff'), url('assets/fonts/golostext/Golostextdemibold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Golos Text';
+    src: local('Golos Text Black'), local('GolosText-Black'), url('assets/fonts/golostext/Golostextblack.woff2') format('woff2'), url('assets/fonts/golostext/Golostextblack.woff') format('woff'), url('assets/fonts/golostext/Golostextblack.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Golos Text';
+    src: local('Golos Text Medium'), local('GolosText-Medium'), url('assets/fonts/golostext/Golostextmedium.woff2') format('woff2'), url('assets/fonts/golostext/Golostextmedium.woff') format('woff'), url('assets/fonts/golostext/Golostextmedium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Golos Text';
+    src: local('Golos Text Bold'), local('GolosText-Bold'), url('assets/fonts/golostext/Golostextbold.woff2') format('woff2'), url('assets/fonts/golostext/Golostextbold.woff') format('woff'), url('assets/fonts/golostext/Golostextbold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Golos Text';
+    src: local('Golos Text Bold'), local('GolosText-Bold'), url('assets/fonts/golostext/Golostextbold.woff2') format('woff2'), url('assets/fonts/golostext/Golostextbold.woff') format('woff'), url('assets/fonts/golostext/Golostextbold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+
+@layer base {
+    html {
+        font-family: 'Golos Text', system-ui, sans-serif;
+    }
+    body {
+        overflow-x: hidden;
+        background: #fbfbfb;
+    }
+}
+
