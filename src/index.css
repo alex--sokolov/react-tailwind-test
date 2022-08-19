@@ -36,13 +36,15 @@
     font-weight: 700;
     font-style: normal;
 }
+
+
+
 @font-face {
     font-family: 'Golos Text';
     src: local('Golos Text Bold'), local('GolosText-Bold'), url('assets/fonts/golostext/Golostextbold.woff2') format('woff2'), url('assets/fonts/golostext/Golostextbold.woff') format('woff'), url('assets/fonts/golostext/Golostextbold.ttf') format('truetype');
     font-weight: 700;
     font-style: normal;
 }
-
 
 @layer base {
     html {

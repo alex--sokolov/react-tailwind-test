@@ -3,6 +3,12 @@ export interface ISection2 {
   text: string;
 }
 
+export interface ISection4 {
+  icon: string;
+  text: string;
+}
+
 export interface IData {
   section2: ISection2[];
+  section4: ISection4[];
 }
