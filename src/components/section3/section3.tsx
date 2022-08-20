@@ -2,21 +2,21 @@ import React from 'react';
 
 const Section3 = () => {
   return (
-    <section id="section3" className="mt-[140px]">
-      <div className="flex items-center flex-col">
-        <div className="relative text-3xl text-black font-semibold
-         before:content-[''] before:absolute before:-left-[53px] before:bottom-[16px] before:w-[27px]  before:h-[26px]
+    <section id="section3" className="mt-[40px] xl:mt-[140px] p-[0_40px]">
+      <div className="flex items-center flex-col ">
+        <div className="relative text-[24px] ml-[60px] xl:text-3xl text-black font-semibold
+         before:content-[''] before:absolute before:-left-[53px] before:bottom-0 xl:before:bottom-[16px] before:w-[27px]  before:h-[26px]
               before:bg-no-repeat before:bg-[url('../src/assets/img/svg/question-mark.svg')]">
           Как именно ты станешь разработчиком
         </div>
-        <div className="mt-[40px] text-[24px] tracking-[.05em] leading-[140%]">
+        <div className="mt-[40px] text-[18px] xl:text-[24px] tracking-[.05em] leading-[140%]">
           На курсе ты не просто изучаешь теоретический материал. в процессе изучения<br/>
           ты повторяете за действующим разработчиком, после чего <strong>закрепляешь знания<br/> на заданиях и проектах.</strong>
         </div>
         <div
           className="relative mt-[60px] h-[654px] w-[1410px] bg-[url('../src/assets/img/png/setapper.png')] bg-no-repeat bg-center">
           <div
-            className="absolute left-[20px] top-[112px] w-[324px] h-[288px] rounded-[14px] border border-[#947eff] bg-[#fff]">
+            className="absolute left-[50%] translate-x-[-50%] xl:translate-x-[0] xl:left-[20px] xl:top-[112px] w-[324px] h-[288px] rounded-[14px] border border-[#947eff] bg-[#fff]">
             <p className="text-[14px] uppercase font-semibold leading-[130%] text-[#9088ff] ml-[20px] mt-[24px]">
               2 Командных проекта
             </p>
@@ -35,7 +35,8 @@ const Section3 = () => {
           </div>
 
           <div
-            className="absolute -right-[6px] top-[215px] w-[390px] h-[416px] rounded-[14px] border border-[#947eff] bg-[#fff]">
+            className="absolute left-[50%] translate-x-[-50%] xl:translate-x-[0] xl:left-auto xl:-right-[6px]
+            top-[300px] xl:top-[215px] w-[324px] xl:w-[390px] h-[550px] xl:h-[416px] rounded-[14px] border border-[#947eff] bg-[#fff]">
             <p className="text-[14px] uppercase font-semibold leading-[130%] text-[#9088ff] ml-[20px] mt-[24px]">
               Индивидуальные проекты
             </p>
