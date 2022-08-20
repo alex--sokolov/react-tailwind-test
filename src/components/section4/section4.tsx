@@ -12,7 +12,6 @@ import benefit5 from './../../assets/img/svg/benefit-5.svg';
 import benefit6 from './../../assets/img/svg/benefit-6.svg';
 
 import { useInView } from 'react-intersection-observer';
-import { useAnimation } from 'framer-motion';
 
 const getBenefitImage = (benefitName: string) => {
   switch (benefitName) {
@@ -40,20 +39,12 @@ const Section4 = (props: Pick<IData, 'section4'>) => {
   const { ref, inView } = useInView(
     {
       threshold: [0.25],
-      // rootMargin: `-${document.documentElement.clientHeight / 2}px`
-      // delay: 1000,
-      // trackVisibility: true,
-      //   // delay: 1,
-      //   // rootMargin: '200px'
     });
 
 
   const [isBlockOver, setIsBlockOver] = useState(false);
   const [pos, setPos] = useState(0);
   const [stage, setStage] = useState(1);
-
-
-  console.log('pos:', pos);
 
   const h = document.documentElement.clientHeight;
   const w = document.documentElement.clientWidth;
@@ -139,18 +130,13 @@ const Section4 = (props: Pick<IData, 'section4'>) => {
     pos + 14 * h / 5
   ];
 
-
-  const h1Animation = useAnimation();
-  const tabsAnimation = useAnimation();
   let { scrollY } = useScroll();
   let scrollYOnDirectionChange = useRef(scrollY.get());
   let lastPixelsScrolled = useRef(0);
   let lastScrollDirection = useRef('down');
   let pixelsScrolled = useMotionValue(0);
   let heightSection = useTransform(pixelsScrolled, scrollThreshold, [100, 400]);
-  let topSection = useTransform(pixelsScrolled, scrollThreshold, [0, 300]);
   let height = useMotionTemplate`${heightSection}vh`;
-  let top = useMotionTemplate`${topSection}vh`;
 
   let h1Opacity1 = useTransform(pixelsScrolled, scrollThreshold1, [0, 1]);
   let h1Top1 = useTransform(pixelsScrolled, scrollThreshold1, [30, 10]);
@@ -207,12 +193,6 @@ const Section4 = (props: Pick<IData, 'section4'>) => {
 
   let tab1Opacity = useTransform(pixelsScrolled, scrollThreshold9, [0.5, 1]);
   let tab2Opacity = useTransform(pixelsScrolled, scrollThreshold9, [1, 0.5]);
-
-
-  // let tabTranslateY = useTransform(pixelsScrolled, scrollThreshold2, [0, -180]);
-  // console.log('height: ', height);
-  // console.log('top: ', top);
-  // console.log('stage', stage);
 
   const tabElements = stage < 3 ? section4.slice(0, 3) : section4.slice(3, 6);
 
@@ -325,153 +305,10 @@ const Section4 = (props: Pick<IData, 'section4'>) => {
     );
   });
 
-  const scrollFunc = (latest: number) => {
-    // console.log('latest:', latest);
-    // console.log('pos:', pos);
-    // console.log('scrollThreshold[0]: ', scrollThreshold[0]);
-    // console.log('scrollThreshold[1]: ', scrollThreshold[1]);
-    if (
-      latest < scrollThreshold[0]
-    ) return;
-    let isScrollingDown = scrollY.getPrevious() - latest < 0;
-    let scrollDirection = isScrollingDown ? 'down' : 'up';
-
-    let currentPixelsScrolled = pixelsScrolled.get();
-    let newPixelsScrolled: number;
-
-    // console.log('currentPixelsScrolled: ', currentPixelsScrolled);
-
-
-    if (lastScrollDirection.current !== scrollDirection) {
-      lastPixelsScrolled.current = currentPixelsScrolled;
-      scrollYOnDirectionChange.current = latest;
-    }
-
-    if (isScrollingDown) {
-      newPixelsScrolled = Math.min(
-        lastPixelsScrolled.current +
-        (latest - scrollYOnDirectionChange.current),
-        scrollThreshold[1]
-      );
-
-      if (newPixelsScrolled >= scrollThreshold[1]) {
-        console.log('EPTA');
-        if (!isBlockOver) setIsBlockOver(true);
-      }
-    } else {
-      if (latest > scrollThreshold[1]) {
-        newPixelsScrolled = scrollThreshold[1];
-      } else {
-        // console.log('GO UPPP', latest)
-        newPixelsScrolled = Math.max(latest,
-          scrollThreshold[0]
-        );
-      }
-      if (newPixelsScrolled > scrollThreshold[0] && newPixelsScrolled < scrollThreshold[1]) {
-        if (isBlockOver) setIsBlockOver(false);
-      }
-    }
-    // console.log('latest:', latest);
-    // console.log('isScrollingDown:', isScrollingDown);
-    // console.log('newPixelsScrolled:', newPixelsScrolled);
-    // console.log('scrollDirection:', scrollDirection);
-
-    pixelsScrolled.set(newPixelsScrolled);
-    lastScrollDirection.current = scrollDirection;
-
-    if (pixelsScrolled.get() < scrollThreshold[0] || pixelsScrolled.get() > scrollThreshold[1]) return;
-    const diff = pixelsScrolled.get() - scrollThreshold[0];
-    console.log('diff: ', diff);
-    if (diff > 400 && diff <= 700) {
-      setStage(1);
-    }
-    if (diff > 900 && diff <= 1200) {
-      setStage(2);
-    }
-
-    if (diff > 1700 && diff <= 1900) {
-      setStage(3);
-    }
-
-    if (diff > 2100 && diff <= 2300) {
-      setStage(4);
-    }
-
-    // if (isScrollingDown) {
-    //   if (diff > 400) {
-    //     tabsAnimation.start({
-    //       opacity: 1,
-    //       y: -180,
-    //       transition: {
-    //         opacity: { duration: 1 },
-    //         y: { delay: 1,duration: 1}
-    //       }
-    //     });
-    //   }
-    // }
-    // if (!isScrollingDown) {
-    //   if (diff <= 400) {
-    //     tabsAnimation.start({
-    //       opacity: 0,
-    //       y: 0,
-    //       transition: {
-    //         type: 'spring', duration: 1
-    //       }
-    //     });
-    //   }
-    // }
-  };
-
-  // const h1Animation = {
-  //   initial: {
-  //     opacity: 0,
-  //     y: 0,
-  //     transition: {
-  //       type: 'spring', duration: 1
-  //     }
-  //   },
-  //   start: {
-  //     opacity: 1,
-  //     y: -80,
-  //     transition: {
-  //       opacity: {
-  //         duration: 1,
-  //       },
-  //       y: {
-  //         delay: 1,
-  //         duration: 1,
-  //       }
-  //     }
-  //   }
-  // };
-
-
-  // const appearBlockAnimation = {
-  //   before: {
-  //     y: 300
-  //   },
-  //   visible: {
-  //     y: 0,
-  //     transition: { duration: 1 },
-  //   },
-  //   exit: {
-  //     y: 0,
-  //     opacity: 1
-  //   },
-  // };
 
 
   useEffect(() => {
     const current = scrollY.get();
-    // console.log('------------------------------------------------------------');
-    // console.log('scrollY.latest: ', scrollY.getPrevious());
-    // console.log('scrollY.get: ', scrollY.get());
-    // console.log('scrollYOnDirectionChange: ', scrollYOnDirectionChange);
-    // console.log(' lastPixelsScrolled: ', lastPixelsScrolled);
-    // console.log(' scrollThreshold[0]: ', scrollThreshold[0]);
-    // console.log(' scrollThreshold[1]: ', scrollThreshold[1]);
-    // console.log(' pixelsScrolled: ', pixelsScrolled);
-    // console.log('current: ',current);
     if (pos === 0) {
       setPos(current);
     }
@@ -479,19 +316,74 @@ const Section4 = (props: Pick<IData, 'section4'>) => {
     if (inView && current < posEnd) {
       setIsBlockOver(false);
     }
-
-    // console.log('current ', current);
-    // console.log('posEnd ', posEnd);
-    // console.log('inside use effect, inView = ', inView);
   }, [inView]);
 
 
   useEffect(() => {
+    const scrollFunc = (latest: number) => {
+      if (
+        latest < scrollThreshold[0]
+      ) return;
+      let isScrollingDown = scrollY.getPrevious() - latest < 0;
+      let scrollDirection = isScrollingDown ? 'down' : 'up';
+
+      let currentPixelsScrolled = pixelsScrolled.get();
+      let newPixelsScrolled: number;
+
+      if (lastScrollDirection.current !== scrollDirection) {
+        lastPixelsScrolled.current = currentPixelsScrolled;
+        scrollYOnDirectionChange.current = latest;
+      }
+
+      if (isScrollingDown) {
+        newPixelsScrolled = Math.min(
+          lastPixelsScrolled.current +
+          (latest - scrollYOnDirectionChange.current),
+          scrollThreshold[1]
+        );
+
+        if (newPixelsScrolled >= scrollThreshold[1]) {
+          if (!isBlockOver) setIsBlockOver(true);
+        }
+      } else {
+        if (latest > scrollThreshold[1]) {
+          newPixelsScrolled = scrollThreshold[1];
+        } else {
+          newPixelsScrolled = Math.max(latest,
+            scrollThreshold[0]
+          );
+        }
+        if (newPixelsScrolled > scrollThreshold[0] && newPixelsScrolled < scrollThreshold[1]) {
+          if (isBlockOver) setIsBlockOver(false);
+        }
+      }
+
+      pixelsScrolled.set(newPixelsScrolled);
+      lastScrollDirection.current = scrollDirection;
+
+      if (pixelsScrolled.get() < scrollThreshold[0] || pixelsScrolled.get() > scrollThreshold[1]) return;
+      const diff = pixelsScrolled.get() - scrollThreshold[0];
+      console.log('diff: ', diff);
+      if (diff > 400 && diff <= 700) {
+        setStage(1);
+      }
+      if (diff > 900 && diff <= 1200) {
+        setStage(2);
+      }
+
+      if (diff > 1700 && diff <= 1900) {
+        setStage(3);
+      }
+
+      if (diff > 2100 && diff <= 2300) {
+        setStage(4);
+      }
+    };
     if (pos === 0) {
       return;
     }
     return scrollY.onChange(scrollFunc);
-  }, [pixelsScrolled, scrollY, pos]);
+  }, [scrollY, pos]);
 
   const refInner = useRef(null);
   return (
@@ -499,22 +391,11 @@ const Section4 = (props: Pick<IData, 'section4'>) => {
       <section id="section4" ref={ref} className="overflow-y-hidden" style={{ height: 4 * h }}>
         <motion.div className="relative"
                     style={{ height }}
-          // layout
-          // initial="before"
-          // whileInView="visible"
-          // exit="exit"
-          // viewport={{
-          //   amount: 0.1,
-          // }}
         >
           <AnimatePresence>
             <motion.div
               ref={refInner}
-              // layout
-              // variants={appearBlockAnimation}
               className="sticky  pt-[203px] bg-[#0f1214] w-[97%] h-[90vh] rounded-[20px] bottom-[5vh] left-[1.5%] flex flex-col justify-between"
-              // style={{ top }}
-
               style={inView
                 ? !isBlockOver ? {
                     position: 'fixed',
