@@ -3,12 +3,40 @@ import React from 'react';
 const Section1 = () => {
 
   return (
-    <section id="section1" className="h-[790px]">
+    <section id="section1" className="h-[600px] lg:h-[790px]">
       <div
-        className="absolute top-[99px] ml-[182.5px] bg-[#7b72fe] 3xl:w-[1760px] w-full h-[680px] rounded-tl-[50px] rounded-bl-[50px]
-        border-2 border-red-600">
+        className="absolute top-[5px] lg:top-[99px] ml-[2px] lg:ml-[10px] 2xl:ml-[182.5px] bg-[#7b72fe] 3xl:w-[1760px] w-full h-[560px] lg:h-[680px]
+        rounded-[50px] rounded-br-[0] lg:rounded-tr-[0]">
         <div className="relative w-full h-full">
-          <div className="absolute w-[831px] h-[601px] ml-[969.5px] bottom-0 z-30">
+
+          <div className="absolute top-0 left-0 z-10 pl-[15px] sm:pl-[95px] w-full">
+            <h1 className="text-[20px] sm:text-[26px] 2xl:text-3xl font-semibold text-white mt-[67px]">
+              Профессия<br/>
+              Frontend — разработчик
+            </h1>
+            <h2 className="text-[16px] sm:text-[18px] 2xl:text-2xl font-semibold text-white mt-[40px]">
+              Стань с нуля продвинутым Junior разработчиком<br/>
+              за 7 месяцев с знанием технологий больше, чем<br/>
+              у других кандидатов
+            </h2>
+            <p className="text-[12px] 2xl:text-[18px] tracking-[.05em] leading-[150%] font-semibold text-white mt-[26px]">
+              Начиная с основ изучишь JavaScript, разберешься с самыми популярными<br/>
+              технологиями, научишься писать Frontend на фреймворке и связывать его с<br/>
+              Backend. Навыки после курса оцениваются от 100 т.р.
+            </p>
+            <button
+              className="w-[90vw] sm:w-[325px] h-[74px] rounded-[51px] p-[28px 5vw] sm:p-[28px 40px] font-[18px] text-white mt-[60px] bg-[#ed7138]">
+              Задать вопрос об обучении
+            </button>
+          </div>
+          <div
+            className="absolute bottom-0 ml-[123px] w-[1040px] h-[309px] bg-no-repeat bg-[url('../src/assets/img/png/circles.png')] z-0">
+          </div>
+
+          <div className="content-[''] absolute -left-[66px] -bottom-[46px] w-[132px]  h-[132px]
+              bg-no-repeat bg-[url('../src/assets/img/jpg/background-dots.jpg')] -z-10">
+          </div>
+          <div className="absolute w-[831px] h-[601px] ml-[600px] 2xl:ml-[969.5px] bottom-0 z-30 hidden lg:block">
             <div className="relative w-full h-full">
               <div className="absolute w-[831px] h-[601px] bottom-0 bg-cover bg-[url('../src/assets/img/png/javascript-anim.png')]">
               </div>
@@ -27,33 +55,7 @@ const Section1 = () => {
               </div>
             </div>
           </div>
-          <div className="absolute top-0 left-0 z-10">
-            <h1 className="text-3xl font-semibold text-white ml-[95px] mt-[67px]">
-              Профессия<br/>
-              Frontend — разработчик
-            </h1>
-            <h2 className="text-2xl font-semibold text-white ml-[95px] mt-[40px]">
-              Стань с нуля продвинутым Junior разработчиком<br/>
-              за 7 месяцев с знанием технологий больше, чем<br/>
-              у других кандидатов
-            </h2>
-            <p className="font-[18px] tracking-[.05em] leading-[150%] font-semibold text-white ml-[95px] mt-[26px]">
-              Начиная с основ изучишь JavaScript, разберешься с самыми популярными<br/>
-              технологиями, научишься писать Frontend на фреймворке и связывать его с<br/>
-              Backend. Навыки после курса оцениваются от 100 т.р.
-            </p>
-            <button
-              className="w-[325px] h-[74px] rounded-[51px] p-[28px 40px] font-[18px] text-white ml-[95px] mt-[60px] bg-[#ed7138]">
-              Задать вопрос об обучении
-            </button>
-          </div>
-          <div
-            className="absolute bottom-0 ml-[123px] w-[1040px] h-[309px] bg-no-repeat bg-[url('../src/assets/img/png/circles.png')] z-0">
-          </div>
 
-          <div className="content-[''] absolute -left-[66px] -bottom-[46px] w-[132px]  h-[132px]
-              bg-no-repeat bg-[url('../src/assets/img/jpg/background-dots.jpg')] -z-10">
-          </div>
         </div>
       </div>
     </section>
