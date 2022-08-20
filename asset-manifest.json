@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/react-tailwind-test/static/css/main.eedc7a70.css",
-    "main.js": "/react-tailwind-test/static/js/main.605d7cc2.js",
+    "main.js": "/react-tailwind-test/static/js/main.b564116c.js",
     "static/js/787.6f029b8d.chunk.js": "/react-tailwind-test/static/js/787.6f029b8d.chunk.js",
     "static/media/setapper.png": "/react-tailwind-test/static/media/setapper.e8dad4e9faa28852d250.png",
     "static/media/javascript-anim.png": "/react-tailwind-test/static/media/javascript-anim.e6b99f7a86eaf4aae95a.png",
@@ -31,11 +31,11 @@
     "index.html": "/react-tailwind-test/index.html",
     "static/media/benefit-5.svg": "/react-tailwind-test/static/media/benefit-5.2772e41710db3e7ce31bf7480d633568.svg",
     "main.eedc7a70.css.map": "/react-tailwind-test/static/css/main.eedc7a70.css.map",
-    "main.605d7cc2.js.map": "/react-tailwind-test/static/js/main.605d7cc2.js.map",
+    "main.b564116c.js.map": "/react-tailwind-test/static/js/main.b564116c.js.map",
     "787.6f029b8d.chunk.js.map": "/react-tailwind-test/static/js/787.6f029b8d.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.eedc7a70.css",
-    "static/js/main.605d7cc2.js"
+    "static/js/main.b564116c.js"
   ]
 }
