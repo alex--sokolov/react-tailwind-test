@@ -36,11 +36,6 @@ const getBenefitImage = (benefitName: string) => {
 const Section4 = (props: Pick<IData, 'section4'>) => {
 
   const { section4 } = props;
-  const [tab, setTab] = useState('skills_upgrade');
-
-  // const sectionHeight = (1000 - document.documentElement.clientHeight) > 0
-  //   ? 4000
-  //   : document.documentElement.clientHeight * 4;
 
   const { ref, inView } = useInView(
     {
@@ -61,86 +56,87 @@ const Section4 = (props: Pick<IData, 'section4'>) => {
   console.log('pos:', pos);
 
   const h = document.documentElement.clientHeight;
+  const w = document.documentElement.clientWidth;
   const posEnd = pos + 4 * h;
 
   let scrollThreshold = [
     pos,
-    pos + 3*h
+    pos + 3 * h
   ];
   let scrollThreshold1 = [
     pos,
-    pos + h/5
+    pos + h / 5
   ];
   let scrollThreshold2 = [
-    pos + h/5,
-    pos + 2*h/5
+    pos + h / 5,
+    pos + 2 * h / 5
   ];
   let scrollThreshold3 = [
-    pos + 2*h/5,
-    pos + 3*h/5
+    pos + 2 * h / 5,
+    pos + 3 * h / 5
   ];
   let scrollThreshold4 = [
-    pos + 2.25*h/5,
-    pos + 3.25*h/5
+    pos + 2.25 * h / 5,
+    pos + 3.25 * h / 5
   ];
   let scrollThreshold5 = [
-    pos + 2.5*h/5,
-    pos + 3.5*h/5
+    pos + 2.5 * h / 5,
+    pos + 3.5 * h / 5
   ];
   let scrollThreshold6 = [
-    pos + 4.5*h/5,
-    pos + 5.5*h/5
+    pos + 4.5 * h / 5,
+    pos + 5.5 * h / 5
   ];
   let scrollThreshold7 = [
-    pos + 4.75*h/5,
-    pos + 5.75*h/5
+    pos + 4.75 * h / 5,
+    pos + 5.75 * h / 5
   ];
   let scrollThreshold8 = [
     pos + h,
-    pos + 6*h/5
+    pos + 6 * h / 5
   ];
 
   let scrollThreshold9 = [
-    pos + 6*h/5,
-    pos + 7*h/5
+    pos + 6 * h / 5,
+    pos + 7 * h / 5
   ];
 
   let scrollThreshold10 = [
-    pos + 7*h/5,
-    pos + 8*h/5
+    pos + 7 * h / 5,
+    pos + 8 * h / 5
   ];
   let scrollThreshold11 = [
-    pos + 8.25*h/5,
-    pos + 9.25*h/5
+    pos + 8.25 * h / 5,
+    pos + 9.25 * h / 5
   ];
 
   let scrollThreshold12 = [
-    pos + 8.5*h/5,
-    pos + 9.5*h/5
+    pos + 8.5 * h / 5,
+    pos + 9.5 * h / 5
   ];
 
   let scrollThreshold13 = [
-    pos + 10.5*h/5,
-    pos + 11.5*h/5
+    pos + 10.5 * h / 5,
+    pos + 11.5 * h / 5
   ];
   let scrollThreshold14 = [
-    pos + 10.75*h/5,
-    pos + 11.75*h/5
+    pos + 10.75 * h / 5,
+    pos + 11.75 * h / 5
   ];
 
   let scrollThreshold15 = [
-    pos + 11*h/5,
-    pos + 12*h/5
+    pos + 11 * h / 5,
+    pos + 12 * h / 5
   ];
 
   let scrollThreshold16 = [
-    pos + 12*h/5,
-    pos + 13*h/5
+    pos + 12 * h / 5,
+    pos + 13 * h / 5
   ];
 
   let scrollThreshold17 = [
-    pos + 13*h/5,
-    pos + 14*h/5
+    pos + 13 * h / 5,
+    pos + 14 * h / 5
   ];
 
 
@@ -163,8 +159,6 @@ const Section4 = (props: Pick<IData, 'section4'>) => {
   let tabOpacity1 = useTransform(pixelsScrolled, scrollThreshold2, [0, 1]);
   let tabOpacity2 = useTransform(pixelsScrolled, scrollThreshold16, [1, 0]);
   let tabTranslateX = useTransform(pixelsScrolled, scrollThreshold9, [120, -120]);
-  const tabTranslateXYVH = useMotionTemplate`calc(50% + ${tabTranslateX}px)`;
-
 
   const tabOpacity = stage < 3 ? tabOpacity1 : tabOpacity2;
   const h1Opacity = stage < 3 ? h1Opacity1 : h1Opacity2;
@@ -211,20 +205,19 @@ const Section4 = (props: Pick<IData, 'section4'>) => {
   let item6TranslateY2 = useTransform(pixelsScrolled, scrollThreshold15, [-10, 0]);
   const item6TranslateY2VH = useMotionTemplate`${item6TranslateY2}vh`;
 
-
   let tab1Opacity = useTransform(pixelsScrolled, scrollThreshold9, [0.5, 1]);
   let tab2Opacity = useTransform(pixelsScrolled, scrollThreshold9, [1, 0.5]);
 
 
   // let tabTranslateY = useTransform(pixelsScrolled, scrollThreshold2, [0, -180]);
-
   // console.log('height: ', height);
   // console.log('top: ', top);
-  console.log('stage', stage);
-  const tabElements = stage < 3 ? section4.slice(0, 3) : section4.slice(3, 6);
-  let blocks = tabElements.map((item: ISection4, index: number) => {
-    const img = getBenefitImage(item.icon);
+  // console.log('stage', stage);
 
+  const tabElements = stage < 3 ? section4.slice(0, 3) : section4.slice(3, 6);
+
+  const blocks = tabElements.map((item: ISection4, index: number) => {
+    const img = getBenefitImage(item.icon);
     const getOpacity = () => {
       if (stage === 1) {
         switch (index) {
@@ -271,7 +264,6 @@ const Section4 = (props: Pick<IData, 'section4'>) => {
 
       return 0;
     };
-
     const getTranslateY = () => {
       if (stage === 1) {
         switch (index) {
@@ -315,38 +307,23 @@ const Section4 = (props: Pick<IData, 'section4'>) => {
       }
       return 0;
     };
-
     const opacity = getOpacity();
     const translateY = getTranslateY();
 
     return (
       <motion.div
-        className="flex items-center flex-col"
+        className="flex items-center flex-col opacity-1"
         key={generateKey(index)}
         style={{ opacity, translateY }}
       >
         <div className=""><img src={img} alt=""/></div>
-        <div className="text-[21px] font-medium leading-[130%] text-white text-center pt-[30px]">
+        <div
+          className="text-[12px] md:text-[16px] lg:text-[21px] font-medium leading-[130%] text-white text-center pt-[30px]">
           {Parser(item.text)}
         </div>
       </motion.div>
     );
   });
-
-  useEffect(() => {
-    blocks = section4.map((item: ISection4, index: number) => {
-      const img = getBenefitImage(item.icon);
-      return (
-        <div className="flex items-center flex-col" key={generateKey(index)}>
-          <div className=""><img src={img} alt=""/></div>
-          <div
-            className="text-[21px] font-medium leading-[130%] text-white text-center pt-[30px]">
-            {Parser(item.text)}
-          </div>
-        </div>
-      );
-    });
-  }, [tab]);
 
   const scrollFunc = (latest: number) => {
     // console.log('latest:', latest);
@@ -503,9 +480,9 @@ const Section4 = (props: Pick<IData, 'section4'>) => {
       setIsBlockOver(false);
     }
 
-    console.log('current ', current);
-    console.log('posEnd ', posEnd);
-    console.log('inside use effect, inView = ', inView);
+    // console.log('current ', current);
+    // console.log('posEnd ', posEnd);
+    // console.log('inside use effect, inView = ', inView);
   }, [inView]);
 
 
@@ -519,7 +496,7 @@ const Section4 = (props: Pick<IData, 'section4'>) => {
   const refInner = useRef(null);
   return (
     <>
-      <section id="section4" ref={ref} className="overflow-y-hidden" style={{  height: 4*h }}>
+      <section id="section4" ref={ref} className="overflow-y-hidden" style={{ height: 4 * h }}>
         <motion.div className="relative"
                     style={{ height }}
           // layout
@@ -533,7 +510,7 @@ const Section4 = (props: Pick<IData, 'section4'>) => {
           <AnimatePresence>
             <motion.div
               ref={refInner}
-              layout
+              // layout
               // variants={appearBlockAnimation}
               className="sticky  pt-[203px] bg-[#0f1214] w-[97%] h-[90vh] rounded-[20px] bottom-[5vh] left-[1.5%] flex flex-col justify-between"
               // style={{ top }}
@@ -561,44 +538,36 @@ const Section4 = (props: Pick<IData, 'section4'>) => {
               }
 
             >
-              <motion.h1 className="absolute w-full text-[54px] font-bold leading-[150%] text-white text-center
+              <motion.h1 className="absolute w-full text-[22px] md:text-[32px] lg:text-[54px] leading-[150%] font-bold text-white text-center
               left-[50%] translate-x-[-50%]"
                          style={{ opacity: h1Opacity, top: h1TopVH }}
               >
                 Что тебе даст прохождение курса ?
               </motion.h1>
               <motion.div className="absolute w-full flex justify-center gap-10 opacity-0 top-[25vh]"
-                          style={{ opacity: tabOpacity, translateX: tabTranslateX }}
+                          style={{ opacity: tabOpacity, translateX: w > 768 ? tabTranslateX : 0 }}
               >
-                <motion.p className="text-[24px] uppercase font-semibold leading-[130%] text-white text-center "
-                          style={{ opacity: tab1Opacity }}
+                <motion.p
+                  className="text-[14px] md:text-[18px] lg:text-[24px]  uppercase font-semibold leading-[130%] text-white text-center "
+                  style={{ opacity: tab1Opacity }}
                 >
                   Skills upgrade
                 </motion.p>
                 <motion.p
-                  className="text-[24px] uppercase font-semibold leading-[130%] text-white text-center"
+                  className="text-[14px] md:text-[18px] lg:text-[24px]  uppercase font-semibold leading-[130%] text-white text-center"
                   style={{ opacity: tab2Opacity }}
                 >
                   Strong hard skills
                 </motion.p>
               </motion.div>
-              <div className="absolute w-full flex justify-center gap-[60px] top-[50vh]">
+              <div className="absolute w-full flex justify-center gap-[20px] md:gap-[40px] lg:gap-[60px]  top-[50vh]">
                 {blocks}
               </div>
             </motion.div>
           </AnimatePresence>
         </motion.div>
       </section>
-      <motion.section id="next" className="h-[1000px] bg-red-600 text-3xl text-center mt-[50px]"
-        // style={inView && !isBlockOver
-        //   ? {
-        //     marginTop: '4000px'
-        //   }
-        //   : {
-        //     marginTop: '40px'
-        //   }
-        // }
-      >
+      <motion.section id="next" className="h-[1000px] bg-red-600 text-3xl text-center mt-[50px]">
         Next block
       </motion.section>
     </>
